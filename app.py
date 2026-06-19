@@ -31,8 +31,15 @@ except Exception as e:
     print(f"❌ Error creating connection pool: {e}")
 
 def get_db_connection():
-    """Helper function to fetch a connection from the pool."""
-    return db_pool.get_connection()
+    # Render looks here first. If empty, it falls back to 'localhost'
+    return mysql.connector.connect(
+        host=os.environ.get('DB_HOST', 'localhost'),
+        port=int(os.environ.get('DB_PORT', 3306)),
+        user=os.environ.get('DB_USER', 'root'),
+        password=os.environ.get('DB_PASSWORD', 'aarush'),
+        database=os.environ.get('DB_NAME', 'wholesaledb'),
+        autocommit=True
+    )
 
 # Route to serve our frontend homepage
 @app.route('/')
