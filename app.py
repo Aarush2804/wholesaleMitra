@@ -10,36 +10,31 @@ import secrets
 app = Flask(__name__, static_folder='public', static_url_path='')
 CORS(app)  # Allows smooth frontend-backend connection
 
-# MySQL Database Configuration
 db_config = {
-    'host': 'localhost',
-    'user': 'root',
-    'password': 'aarush',  # <-- Put your MySQL password here
-    'database': 'Wholesaledb',
-    'auth_plugin': 'mysql_native_password'
+    'host': os.environ.get('DB_HOST', 'localhost'),
+    'port': int(os.environ.get('DB_PORT', 3306)),
+    'user': os.environ.get('DB_USER', 'root'),
+    'password': os.environ.get('DB_PASSWORD', 'SECRET_PLACEHOLDER'), # Safe placeholder
+    'database': os.environ.get('DB_NAME', 'wholesaledb')
 }
 
-# Create a connection pool for efficient database management
 try:
     db_pool = mysql.connector.pooling.MySQLConnectionPool(
         pool_name="wholesale_pool",
         pool_size=5,
         **db_config
     )
-    print("✅ MySQL Connection Pool established.")
+    print("✅ MySQL Connection Pool established dynamically.")
 except Exception as e:
     print(f"❌ Error creating connection pool: {e}")
 
+# Keep your function below it as a fallback tool
 def get_db_connection():
-    # Render looks here first. If empty, it falls back to 'localhost'
-    return mysql.connector.connect(
-        host=os.environ.get('DB_HOST', 'localhost'),
-        port=int(os.environ.get('DB_PORT', 3306)),
-        user=os.environ.get('DB_USER', 'root'),
-        password=os.environ.get('DB_PASSWORD', 'aarush'),
-        database=os.environ.get('DB_NAME', 'wholesaledb'),
-        autocommit=True
-    )
+    try:
+        return db_pool.get_connection()
+    except Exception:
+        # Fallback if pool is exhausted or fails
+        return mysql.connector.connect(**db_config, autocommit=True)
 
 # Route to serve our frontend homepage
 @app.route('/')
