@@ -1,307 +1,141 @@
-/* Import a modern, clean font family */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-:root {
-    --primary: #4f46e5;       /* Indigo */
-    --primary-hover: #4338ca;
-    --background: #f8fafc;    /* Soft Slate Blue */
-    --surface: #ffffff;
-    --text-main: #0f172a;     /* Dark Charcoal */
-    --text-muted: #64748b;    /* Cool Gray */
-    --border: #e2e8f0;
-    --success: #10b981;       /* Emerald */
-    --danger: #ef4444;        /* Crimson */
-    --radius-lg: 12px;
-    --radius-md: 8px;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--background);
-    color: var(--text-main);
-    min-height: 100vh;
+body { 
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+    margin: 0; 
+    padding: 0; 
+    background-color: #f8fafc; 
+    color: #1e293b; 
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 20px;
+    min-height: 100vh;
 }
 
-/* --- LOGIN MODULE PANEL --- */
-.box {
-    background: var(--surface);
-    padding: 40px;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    max-width: 440px;
+/* Master Layout Framework */
+.box { 
+    background: #ffffff; 
+    padding: 35px; 
+    border-radius: 12px; 
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05); 
+    max-width: 420px; 
     width: 100%;
-    margin-top: 12vh;
-    border: 1px solid var(--border);
+    margin-top: 10vh;
 }
 
-.box h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    margin-bottom: 8px;
-    text-align: center;
-}
-
-.box p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    text-align: center;
-    margin-bottom: 24px;
-}
-
-/* --- MAIN WORKSPACE PORTAL --- */
-#portal {
-    max-width: 1200px;
-    width: 100%;
+#portal { 
+    max-width: 1100px; 
+    width: 95%;
     margin: 40px auto;
-    background: var(--surface);
-    padding: 32px;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--border);
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
-/* Header Action Layout */
-.portal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 20px;
-    margin-bottom: 30px;
-}
+/* Typography elements */
+h1, h2, h3 { color: #0f172a; font-weight: 700; margin-top: 0; }
+h1 { font-size: 1.75rem; letter-spacing: -0.025em; }
+h3 { font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;}
 
-.portal-header h1 {
-    font-size: 1.6rem;
-    font-weight: 700;
-    letter-spacing: -0.025em;
-}
-
-.badge {
-    display: inline-block;
-    padding: 4px 10px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    border-radius: 9999px;
-    background: #e0e7ff;
-    color: var(--primary);
-    text-transform: capitalize;
-}
-
-/* Form Styling & Micro-interactions */
-input, select {
-    width: 100%;
-    padding: 12px 16px;
-    margin: 8px 0;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
+/* Custom form components */
+input, select, button { 
+    width: 100%; 
+    padding: 12px 16px; 
+    margin: 8px 0; 
+    border: 1px solid #e2e8f0; 
+    border-radius: 8px; 
+    box-sizing: border-box; 
     font-size: 0.95rem;
-    font-family: inherit;
-    color: var(--text-main);
-    background-color: #fff;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s ease;
     outline: none;
 }
 
 input:focus, select:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
-button {
-    width: 100%;
-    padding: 12px 20px;
-    background-color: var(--primary);
-    color: white;
-    border: none;
-    border-radius: var(--radius-md);
-    font-size: 0.95rem;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
+button { 
+    background-color: #2563eb; 
+    color: white; 
+    border: none; 
+    font-weight: 600; 
+    cursor: pointer; 
 }
 
-button:hover {
-    background-color: var(--primary-hover);
-    transform: translateY(-1px);
+button:hover { background-color: #1d4ed8; transform: translateY(-1px); }
+button:active { transform: translateY(0); }
+
+.hidden { display: none !important; }
+
+/* Grid layout for Customer Product Cards */
+#catalog-results { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 20px; 
+    margin-top: 20px; 
 }
 
-button:active {
-    transform: translateY(0);
+/* Master Data Table elements for Admin Control */
+table { 
+    width: 100%; 
+    border-collapse: separate; 
+    border-spacing: 0;
+    margin-top: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
 }
 
-button.secondary {
-    background-color: #fff;
-    color: #475569;
-    border: 1px solid var(--border);
-}
-
-button.secondary:hover {
-    background-color: #f8fafc;
-    color: var(--text-main);
-}
-
-button.danger {
-    background-color: var(--danger);
-}
-button.danger:hover {
-    background-color: #dc2626;
-}
-
-.hidden {
-    display: none !important;
-}
-
-/* --- CLIENT SECTIONS --- */
-.search-container {
-    background: #f8fafc;
-    padding: 24px;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border);
-    margin-bottom: 30px;
-}
-
-.search-grid-inputs {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-}
-
-#catalog-results {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 24px;
-    margin-top: 16px;
-}
-
-.product-card {
-    background: #fff;
-    padding: 24px;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.product-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-    border-color: #cbd5e1;
-}
-
-.product-card small {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    text-transform: uppercase;
+th { 
+    background-color: #f1f5f9; 
+    color: #475569; 
+    font-weight: 600; 
+    text-transform: uppercase; 
+    font-size: 0.75rem; 
     letter-spacing: 0.05em;
+    padding: 14px 16px;
 }
 
-.product-card h4 {
-    font-size: 1.15rem;
-    margin: 6px 0 12px 0;
-    color: var(--text-main);
+td { 
+    padding: 14px 16px; 
+    border-bottom: 1px solid #e2e8f0;
+    color: #334155;
+    background-color: #ffffff;
 }
 
-.product-card .price-tag {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--success);
-    margin-top: 8px;
-}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background-color: #f8fafc; }
 
-/* --- ADMIN MODULE TABLES --- */
-.admin-wrapper {
-    margin-top: 48px;
-    border-top: 1px dashed var(--border);
-    padding-top: 32px;
-}
-
-.admin-form-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    background: #f8fafc;
-    padding: 24px;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border);
-    margin-bottom: 32px;
-}
-
-.table-responsive {
-    width: 100%;
-    overflow-x: auto;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-    font-size: 0.95rem;
-}
-
-th {
-    background-color: #f1f5f9;
-    color: #475569;
-    font-weight: 600;
-    padding: 14px 18px;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-td {
-    padding: 14px 18px;
-    border-bottom: 1px solid var(--border);
-    background-color: #fff;
-}
-
-tr:last-child td {
-    border-bottom: none;
-}
-
-tr:hover td {
-    background-color: #f8fafc;
-}
-
-/* --- RESPONSIVE BREAKPOINTS --- */
+/* ==========================================================================
+   MOBILE & TABLET RESPONSIVE OVERRIDES (For screens smaller than 768px)
+   ========================================================================== */
 @media (max-width: 768px) {
-    .search-grid-inputs {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 4px;
+    /* 1. Stack the search bar inputs vertically instead of horizontally */
+    #portal div[style*="display: flex; gap: 10px;"] {
+        flex-direction: column !important;
+        gap: 5px !important;
     }
-    .admin-form-grid {
-        grid-template-columns: 1fr;
+
+    #search-type, #search-query, #category-dropdown, button {
+        width: 100% !important;
+        margin: 4px 0 !important;
     }
-    .portal-header {
+
+    /* 2. Fix the header area spacing */
+    #portal div[style*="display: flex; justify-content: space-between;"] {
         flex-direction: column;
         align-items: flex-start;
-        gap: 16px;
+        gap: 15px;
     }
-    .portal-header button {
-        width: 100%;
+
+    /* 3. Make the Admin Input grid single-column */
+    #admin-section div[style*="display: grid;"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* 4. Let the large table container scroll smoothly on small screens */
+    div[style*="overflow-x: auto;"] {
+        border-radius: 8px;
+        box-shadow: inset -10px 0 10px -10px rgba(0,0,0,0.15);
     }
 }

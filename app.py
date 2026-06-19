@@ -10,6 +10,7 @@ import secrets
 app = Flask(__name__, static_folder='public', static_url_path='')
 CORS(app)  # Allows smooth frontend-backend connection
 
+# MySQL Database Configuration
 db_config = {
     'host': os.environ.get('DB_HOST', 'localhost'),
     'port': int(os.environ.get('DB_PORT', 3306)),
